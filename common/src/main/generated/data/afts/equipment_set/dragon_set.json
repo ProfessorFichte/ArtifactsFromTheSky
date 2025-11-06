@@ -1,0 +1,44 @@
+{
+  "bonuses": [
+    {
+      "attributes": {
+        "modifiers": [
+          {
+            "type": "minecraft:generic.attack_damage",
+            "amount": 0.10000000149011612,
+            "id": "afts:dragon_set",
+            "operation": "add_multiplied_base",
+            "slot": "mainhand"
+          }
+        ]
+      },
+      "required_piece_count": 1
+    },
+    {
+      "required_piece_count": 2,
+      "spells": {
+        "content": "ANY",
+        "spell_ids": [
+          "afts:improved_dragons_wrath"
+        ]
+      }
+    },
+    {
+      "required_piece_count": 2,
+      "spells": {
+        "content": "ANY",
+        "spell_ids": [
+          "afts:space_rupture"
+        ]
+      }
+    }
+  ],
+  "items": [
+    "afts:dragon_head",
+    "afts:dragon_chest",
+    "afts:dragon_legs",
+    "afts:dragon_feet",
+    "afts:void_devourer"
+  ],
+  "name": "dragon_set"
+}

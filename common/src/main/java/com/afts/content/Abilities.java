@@ -1,5 +1,6 @@
 package com.afts.content;
 
+import com.afts.effect.AFTSEffects;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.annotation.Nullable;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -27,11 +28,19 @@ public class Abilities {
         return entry;
     }
 
+    private static Spell createModifierAlikePassiveSpell() {
+        var spell = SpellBuilder.createSpellPassive();
+        spell.range = 0;
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_activation = false;
+        return spell;
+    }
+
     /// ACTIVES
-    public static final Entry fotv = add(fotv());
-    private static Entry fotv() {
-        var id = Identifier.of(MOD_ID, "fotv");
-        var title = "Fragment of the Void";
+    public static final Entry vorpal_leap = add(vorpal_leap());
+    private static Entry vorpal_leap() {
+        var id = Identifier.of(MOD_ID, "vorpal_leap");
+        var title = "Vorpal Leap";
         var description = "Teleport through space {teleport_distance} blocks forwards.";
 
         var spell = SpellBuilder.createSpellActive();
@@ -128,25 +137,10 @@ public class Abilities {
         return new Entry(id, spell, title, description, null);
     }
 
-    public static final Entry charged_space_rupture = add(charged_space_rupture());
-    private static Entry charged_space_rupture() {
-        var id = Identifier.of(MOD_ID, "charged_space_rupture");
-        var title = "Charged Space Rupture";
-        var description = "";
-
-        var spell = SpellBuilder.createSpellActive();
-        spell.school = SpellSchools.ARCANE;
-        spell.range = 0;
-        spell.tier = 4;
-
-        SpellBuilder.Cost.exhaust(spell, 0.4F);
-        SpellBuilder.Cost.cooldown(spell, 20);
-        return new Entry(id, spell, title, description, null);
-    }
-    public static final Entry void_rush = add(void_rush());
-    private static Entry void_rush() {
-        var id = Identifier.of(MOD_ID, "void_rush");
-        var title = "Void Rush";
+    public static final Entry void_slam = add(void_slam());
+    private static Entry void_slam() {
+        var id = Identifier.of(MOD_ID, "void_slam");
+        var title = "Void Slam";
         var description = "";
 
         var spell = SpellBuilder.createSpellActive();
@@ -166,36 +160,36 @@ public class Abilities {
         var title = "Space Rupture";
         var description = "";
 
-        var spell = SpellBuilder.createSpellModifier();
+        var spell = createModifierAlikePassiveSpell();
         spell.school = SpellSchools.ARCANE;
-        spell.range = 2.5F;
-        spell.tier = 4;
+        spell.range = 2.0F;
 
-        var damage = SpellBuilder.Impacts.damage(0.5F, 0.8F);
-        damage.particles = new ParticleBatch[] {
+        var trigger = SpellBuilder.Triggers.specificSpellCast("afts:vorpal_leap");
+        spell.passive.triggers = List.of(trigger);
+
+        spell.target.type = Spell.Target.Type.FROM_TRIGGER;
+
+        spell.release.particles_scaled_with_ranged = new ParticleBatch[] {
                 new ParticleBatch(
-                        SpellEngineParticles.MagicParticles.get(
-                                SpellEngineParticles.MagicParticles.Shape.FROST,
-                                SpellEngineParticles.MagicParticles.Motion.BURST
-                        ).id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        30, 0.2F, 0.7F)
+                        SpellEngineParticles.area_effect_293.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.GROUND,
+                        1, 0, 0)
+                        .scale(0.8F)
                         .color(Color.ARCANE.toRGBA())
         };
-        spell.impacts = List.of(damage);
 
-        var area_impact = new Spell.AreaImpact();
-        area_impact.execute_action_type = Spell.Impact.Action.Type.DAMAGE;
-        area_impact.radius = 2.0F;
-        area_impact.area = new Spell.Target.Area();
-        area_impact.area.distance_dropoff = Spell.Target.Area.DropoffCurve.SQUARED;
-        area_impact.particles = new ParticleBatch[]{
-                new ParticleBatch(
-                        "firework",
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        20, 0.15F, 0.15F
-                )
-        };
+        var stashEffect = AFTSEffects.SPACE_RUPTURE;
+        var stashTrigger = SpellBuilder.Triggers.effectTick(stashEffect.id.toString());
+        SpellBuilder.Deliver.stash(spell, stashEffect.id.toString(), 0.75F, List.of(stashTrigger));
+        spell.deliver.stash_effect.consume = 0;
+
+        var impact = SpellBuilder.Impacts.damage(0.5F, 0F);
+        spell.impacts = List.of(impact);
+        var areaImpact = new Spell.AreaImpact();
+        areaImpact.radius = 2F;
+        areaImpact.force_indirect = true;
+        areaImpact.sound = new Sound();
+        spell.area_impact = areaImpact;
 
         return new Entry(id, spell, title, description, null);
     }
@@ -203,38 +197,19 @@ public class Abilities {
     private static Entry improved_dragons_wrath() {
         var id = Identifier.of(MOD_ID, "improved_dragons_wrath");
         var title = "Improved Dragon's Wrath";
-        var description = "";
+        var description = "Dragons Wrath leaves fire puddles behind, for {cloud_duration} sec.";
 
-        var spell = SpellBuilder.createSpellModifier();
+        var spell = createModifierAlikePassiveSpell();
         spell.school = SpellSchools.ARCANE;
-        spell.range = 2.5F;
-        spell.tier = 4;
+        spell.range = 0;
 
-        var damage = SpellBuilder.Impacts.damage(0.5F, 0.8F);
-        damage.particles = new ParticleBatch[] {
-                new ParticleBatch(
-                        SpellEngineParticles.MagicParticles.get(
-                                SpellEngineParticles.MagicParticles.Shape.FROST,
-                                SpellEngineParticles.MagicParticles.Motion.BURST
-                        ).id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        30, 0.2F, 0.7F)
-                        .color(Color.ARCANE.toRGBA())
-        };
-        spell.impacts = List.of(damage);
+        spell.target.type = Spell.Target.Type.FROM_TRIGGER;
 
-        var area_impact = new Spell.AreaImpact();
-        area_impact.execute_action_type = Spell.Impact.Action.Type.DAMAGE;
-        area_impact.radius = 2.0F;
-        area_impact.area = new Spell.Target.Area();
-        area_impact.area.distance_dropoff = Spell.Target.Area.DropoffCurve.SQUARED;
-        area_impact.particles = new ParticleBatch[]{
-                new ParticleBatch(
-                        "firework",
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        20, 0.15F, 0.15F
-                )
-        };
+        var trigger = SpellBuilder.Triggers.specificSpellHit("afts:dragons_wrath");
+        spell.passive.triggers = List.of(trigger);
+
+        SpellBuilder.Complex.flameCloud(spell, 2.0F, 0.3F, 6, null);
+        SpellBuilder.Cost.cooldown(spell, 1);
 
         return new Entry(id, spell, title, description, null);
     }

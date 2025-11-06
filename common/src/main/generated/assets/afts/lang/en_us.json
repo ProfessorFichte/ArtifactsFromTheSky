@@ -1,5 +1,5 @@
 {
-  "equipment_set.afts.test1": "TEST",
+  "equipment_set.afts.dragon_set": "DRAGON SET BONUS",
   "item.afts.fotv": "Fragment of the Void",
   "item.afts.null_ingot": "Null Ingot",
   "item.afts.null_ingot_upgrade": "Smithing Template",
@@ -10,15 +10,15 @@
   "item.afts.void_devourer": "Void Devourer",
   "item.afts.voids_eye": "Voids Eye",
   "itemGroup.afts.generic": "Artifacts from the Sky",
-  "spell.afts.charged_space_rupture.description": "",
-  "spell.afts.charged_space_rupture.name": "Charged Space Rupture",
   "spell.afts.dragons_wrath.description": "Furiously blow infernal fire in front of you, leaving a deadly area for {cloud_duration} seconds dealing {damage}.",
   "spell.afts.dragons_wrath.name": "Dragon's Wrath",
-  "spell.afts.fotv.description": "Teleport through space {teleport_distance} blocks forwards.",
-  "spell.afts.fotv.name": "Fragment of the Void",
+  "spell.afts.improved_dragons_wrath.description": "Dragons Wrath leaves fire puddles behind, for {cloud_duration} sec.",
+  "spell.afts.improved_dragons_wrath.name": "Improved Dragon's Wrath",
   "spell.afts.space_rupture.description": "",
   "spell.afts.space_rupture.name": "Space Rupture",
-  "spell.afts.void_rush.description": "",
-  "spell.afts.void_rush.name": "Void Rush",
+  "spell.afts.void_slam.description": "",
+  "spell.afts.void_slam.name": "Void Slam",
+  "spell.afts.vorpal_leap.description": "Teleport through space {teleport_distance} blocks forwards.",
+  "spell.afts.vorpal_leap.name": "Vorpal Leap",
   "upgrade.afts.null_ingot_upgrade": "Null Armor Upgrade"
 }

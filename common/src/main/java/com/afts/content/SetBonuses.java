@@ -10,6 +10,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.set.EquipmentSet;
+import net.spell_engine.api.spell.container.SpellContainerHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +59,9 @@ public class SetBonuses {
                                 0.1F,
                                 EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE,
                                 id)
-                        )
-                        //EquipmentSet.Bonus.withSpells(4, SpellContainerHelper.createForModifier(WitcherSpells.improved_whirl.id())),
+                        ),
+                        EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.improved_dragons_wrath.id())),
+                        EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.space_rupture.id()))
                 )
         );
     }

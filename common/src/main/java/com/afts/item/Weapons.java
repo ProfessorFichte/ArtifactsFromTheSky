@@ -1,6 +1,5 @@
 package com.afts.item;
 
-import com.afts.content.Abilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
@@ -8,10 +7,12 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
 import net.spell_engine.api.item.Equipment;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -52,10 +53,11 @@ public class Weapons {
 
     public static final Weapon.Entry fotv = sword("fotv",
             Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.ENDER_PEARL)), 7.0F)
-            .translatedName("Fragment of the Void")
-            .spell(Abilities.fotv.id());
+            .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 2.0F))
+            .translatedName("Fragment of the Void");
     public static final Weapon.Entry void_devourer = sword("void_devourer",
             Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DRAGON_BREATH)), 7.5F)
+            .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 3.5F))
             .translatedName("Void Devourer");
 
     static {

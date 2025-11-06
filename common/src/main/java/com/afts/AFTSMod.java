@@ -1,6 +1,7 @@
 package com.afts;
 
 import com.afts.config.Default;
+import com.afts.effect.AFTSEffects;
 import com.afts.item.*;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemStack;
@@ -19,11 +20,18 @@ public final class AFTSMod {
             .setDirectory(MOD_ID)
             .sanitize(true)
             .build();
+    public static ConfigManager<ConfigFile.Effects> effectConfig = new ConfigManager<>
+            ("effects", new ConfigFile.Effects())
+            .builder()
+            .setDirectory(MOD_ID)
+            .sanitize(true)
+            .build();
 
     public static void init() {
         itemConfig.refresh();
+        effectConfig.refresh();
     }
-    public static void registerItmes() {
+    public static void registerItems() {
         Group.AFTS = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Weapons.void_devourer.item().asItem()))
                 .displayName(Text.translatable("itemGroup.afts.generic"))
@@ -35,5 +43,9 @@ public final class AFTSMod {
         ArmorSets.register(itemConfig.value.armor_sets);
         itemConfig.save();
 
+    }
+    public static void registerEffects() {
+        AFTSEffects.register(effectConfig.value);
+        effectConfig.save();
     }
 }

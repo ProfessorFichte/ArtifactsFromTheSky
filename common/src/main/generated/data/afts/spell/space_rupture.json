@@ -1,28 +1,67 @@
 {
   "school": "spell_power:arcane",
-  "range": 2.5,
-  "tier": 4,
-  "type": "MODIFIER",
+  "range": 2.0,
+  "tier": 1,
+  "tooltip": {
+    "show_activation": false
+  },
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "type": "SPELL_CAST",
+        "spell": {
+          "id": "afts:vorpal_leap"
+        }
+      }
+    ]
+  },
+  "release": {
+    "particles_scaled_with_ranged": [
+      {
+        "particle_id": "spell_engine:area_effect_293",
+        "origin": "GROUND",
+        "shape": "SPHERE",
+        "count": 1.0,
+        "max_speed": 0.0,
+        "color_rgba": 4284940287,
+        "scale": 0.8
+      }
+    ]
+  },
+  "target": {
+    "type": "FROM_TRIGGER"
+  },
+  "deliver": {
+    "type": "STASH_EFFECT",
+    "stash_effect": {
+      "id": "afts:space_rupture",
+      "duration": 0.5,
+      "triggers": [
+        {
+          "type": "EFFECT_TICK",
+          "effect": {
+            "id": "afts:space_rupture"
+          }
+        }
+      ],
+      "consume": 0
+    }
+  },
   "impacts": [
     {
       "action": {
         "type": "DAMAGE",
         "damage": {
           "spell_power_coefficient": 0.5,
-          "knockback": 0.8
+          "knockback": 0.0
         }
-      },
-      "particles": [
-        {
-          "particle_id": "spell_engine:magic_frost_burst",
-          "origin": "CENTER",
-          "shape": "SPHERE",
-          "count": 30.0,
-          "min_speed": 0.2,
-          "max_speed": 0.7,
-          "color_rgba": 4284940287
-        }
-      ]
+      }
     }
-  ]
+  ],
+  "area_impact": {
+    "force_indirect": true,
+    "radius": 2.0,
+    "sound": {}
+  }
 }

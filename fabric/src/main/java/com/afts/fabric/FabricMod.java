@@ -8,6 +8,7 @@ public final class FabricMod implements ModInitializer {
     @Override
     public void onInitialize() {
         AFTSMod.init();
-        AFTSMod.registerItmes();
+        AFTSMod.registerItems();
+        AFTSMod.registerEffects();
     }
 }

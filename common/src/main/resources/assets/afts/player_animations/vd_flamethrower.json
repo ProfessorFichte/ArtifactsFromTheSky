@@ -4,7 +4,7 @@
     "description": "Void Devourer Flamethrower",
     "emote":{
         "isLoop": "true",
-        "returnTick": 15,
+        "returnTick": 25,
         "beginTick":8,
         "endTick":40,
         "stopTick":50,
