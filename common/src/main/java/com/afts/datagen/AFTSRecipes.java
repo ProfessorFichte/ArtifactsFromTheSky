@@ -1,5 +1,6 @@
 package com.afts.datagen;
 
+import com.afts.item.ArmorSets;
 import com.afts.item.MaterialItems;
 import com.afts.item.SmithingTemplates;
 import com.afts.item.Weapons;
@@ -64,5 +65,32 @@ public class AFTSRecipes extends FabricRecipeProvider {
                 Weapons.void_devourer.item()
         ).criterion(hasItem(MaterialItems.null_ingot.item()), conditionsFromItem(MaterialItems.null_ingot.item()))
                 .offerTo(recipeExporter,Identifier.of(MOD_ID, "void_devourer_upgrade"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ArmorSets.dragonArmorSet.armorSet().head.asItem())
+                .pattern("AAA")
+                .pattern("A A")
+                .input('A', MaterialItems.dragon_scales.item())
+                .criterion(hasItem(MaterialItems.dragon_scales.item()), conditionsFromItem(MaterialItems.dragon_scales.item()))
+                .offerTo(recipeExporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ArmorSets.dragonArmorSet.armorSet().chest.asItem())
+                .pattern("A A")
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', MaterialItems.dragon_scales.item())
+                .criterion(hasItem(MaterialItems.dragon_scales.item()), conditionsFromItem(MaterialItems.dragon_scales.item()))
+                .offerTo(recipeExporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ArmorSets.dragonArmorSet.armorSet().legs.asItem())
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("A A")
+                .input('A', MaterialItems.dragon_scales.item())
+                .criterion(hasItem(MaterialItems.dragon_scales.item()), conditionsFromItem(MaterialItems.dragon_scales.item()))
+                .offerTo(recipeExporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ArmorSets.dragonArmorSet.armorSet().feet.asItem())
+                .pattern("A A")
+                .pattern("A A")
+                .input('A', MaterialItems.dragon_scales.item())
+                .criterion(hasItem(MaterialItems.dragon_scales.item()), conditionsFromItem(MaterialItems.dragon_scales.item()))
+                .offerTo(recipeExporter);
     }
 }

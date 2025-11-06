@@ -1,5 +1,10 @@
 {
   "equipment_set.afts.dragon_set": "DRAGON SET BONUS",
+  "item.afts.dragon_chest": "",
+  "item.afts.dragon_feet": "",
+  "item.afts.dragon_head": "",
+  "item.afts.dragon_legs": "",
+  "item.afts.dragon_scales": "Ender Dragon Scales",
   "item.afts.fotv": "Fragment of the Void",
   "item.afts.null_ingot": "Null Ingot",
   "item.afts.null_ingot_upgrade": "Smithing Template",

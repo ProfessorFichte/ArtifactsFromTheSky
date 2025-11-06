@@ -1,9 +1,17 @@
-// 1.21.1	2025-11-06T23:46:04.1424938	Artifacts from the Sky/Recipes
+// 1.21.1	2025-11-07T00:19:42.0281575	Artifacts from the Sky/Recipes
+c0aa22457377d9e0decd8df6d2019417c1c7dc3d data\afts\recipe\voids_eye.json
+c429538ca41cd85432ff8cc55805500dd249249f data\afts\advancement\recipes\combat\void_devourer_upgrade.json
+10aa10ac79e54d66a003f7e11d7bd5ebaff86242 data\afts\advancement\recipes\combat\dragon_chest.json
+630dc2f55284e9a1ba90c114d96e85c93efc9247 data\afts\recipe\dragon_feet.json
+7516802c27d0a3e085cf39a5a280e9e2adc362fe data\afts\advancement\recipes\combat\dragon_head.json
 36f38bcffcb12ac37eb9e1d6f5ece2bd4660453c data\afts\advancement\recipes\combat\voids_eye.json
 943522de6296797d7e970b26098cdc54d4360982 data\afts\recipe\void_devourer_upgrade.json
 ed787d275515ed5654d80102951cc0f3903949b1 data\afts\advancement\recipes\combat\fotv.json
 2fa01c41ee092e99ac15c275ca0062840e5cc3b3 data\afts\advancement\recipes\combat\null_ingot.json
-c0aa22457377d9e0decd8df6d2019417c1c7dc3d data\afts\recipe\voids_eye.json
-c429538ca41cd85432ff8cc55805500dd249249f data\afts\advancement\recipes\combat\void_devourer_upgrade.json
+f4e2ba3ddb3757160ebf3864cc08c071952c4fee data\afts\recipe\dragon_legs.json
 a0b02ae104a507e8d99146892eefee11116a8711 data\afts\recipe\null_ingot.json
+3e9ddcb82c00b17b9e67181d777b55e2ed9b9b62 data\afts\advancement\recipes\combat\dragon_feet.json
+08703e3e86134fcf96c2dc1da4aea117576be4c2 data\afts\recipe\dragon_head.json
+8d066e2eab9653062b8d627e855299b756dd965c data\afts\advancement\recipes\combat\dragon_legs.json
+2ad39d3088974412e1d9ed42ff39171a4855309b data\afts\recipe\dragon_chest.json
 99cd22d2172134e1b2a4d1b46c88b8fe0504f61f data\afts\recipe\fotv.json

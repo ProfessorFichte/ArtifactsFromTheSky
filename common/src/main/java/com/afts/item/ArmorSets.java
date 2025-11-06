@@ -81,7 +81,7 @@ public class ArmorSets {
     private static final float dragonKnockbackRes = 0.5F;
     private static final float dragonAttackDmg = 0.05F;
     private static final float dragonSpellPower = 0.025F;
-    private static final float dragonManaRegen = 0.05F;
+    private static final float dragonManaRegen = 1.0F;
 
 
     public static RegistryEntry<ArmorMaterial> material_dragon = material(
@@ -111,7 +111,7 @@ public class ArmorSets {
         return new AttributeModifier(
                 MANA_REGEN_ID.toString(),
                 value,
-                EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+                EntityAttributeModifier.Operation.ADD_VALUE);
     }
 
     public static final Armor.Entry dragonArmorSet = create(

@@ -58,7 +58,6 @@
     "exhaust": 0.4,
     "cooldown": {
       "duration": 10.0
-    },
-    "mana_cost": 6.0
+    }
   }
 }

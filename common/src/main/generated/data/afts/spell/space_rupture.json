@@ -36,7 +36,7 @@
     "type": "STASH_EFFECT",
     "stash_effect": {
       "id": "afts:space_rupture",
-      "duration": 0.5,
+      "duration": 0.75,
       "triggers": [
         {
           "type": "EFFECT_TICK",

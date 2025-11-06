@@ -56,13 +56,10 @@
     }
   ],
   "cost": {
-
     "exhaust": 0.2,
     "cooldown": {
       "duration": 10.0,
       "proportional": true
-    },
-    "mana_cost": 0.5,
-    "apply_channeling_mana_cost": true
+    }
   }
 }

@@ -2,10 +2,7 @@ package com.afts.datagen;
 
 import com.afts.content.Abilities;
 import com.afts.content.SetBonuses;
-import com.afts.item.Group;
-import com.afts.item.MaterialItems;
-import com.afts.item.SmithingTemplates;
-import com.afts.item.Weapons;
+import com.afts.item.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -24,8 +21,10 @@ import net.minecraft.registry.entry.RegistryEntryList;
 import net.spell_engine.api.datagen.SpellGenerator;
 import net.spell_engine.api.item.set.EquipmentSet;
 import net.spell_engine.api.item.set.EquipmentSetRegistry;
-import org.apache.commons.lang3.builder.Builder;
+import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
+import net.spell_engine.rpg_series.tags.RPGSeriesItemTags;
 
+import java.util.LinkedHashMap;
 import java.util.concurrent.CompletableFuture;
 
 public class AFTSDatagen implements DataGeneratorEntrypoint {
@@ -35,6 +34,7 @@ public class AFTSDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(LangGenerator::new);
         pack.addProvider(SpellGen::new);
         pack.addProvider(ModelProvider::new);
+        pack.addProvider(ItemTagGenerator::new);
         pack.addProvider(AFTSRecipes::new);
         pack.addProvider(EquipmentSetGenerator::new);
     }
@@ -70,6 +70,31 @@ public class AFTSDatagen implements DataGeneratorEntrypoint {
             SetBonuses.all.forEach(entry -> {
                 translationBuilder.add(EquipmentSet.translationKey(entry.id()), entry.title());
             });
+            ArmorSets.entries.forEach(entry -> {
+                var translations = new LinkedHashMap<String, String>();
+                translations.put(((Item)entry.armorSet().head).getTranslationKey(), entry.armorSet().headTranslation);
+                translations.put(((Item)entry.armorSet().chest).getTranslationKey(), entry.armorSet().chestTranslation);
+                translations.put(((Item)entry.armorSet().legs).getTranslationKey(), entry.armorSet().legsTranslation);
+                translations.put(((Item)entry.armorSet().feet).getTranslationKey(), entry.armorSet().feetTranslation);
+                for (var armorEntry: translations.entrySet()) {
+                    translationBuilder.add(armorEntry.getKey(), armorEntry.getValue());
+                }
+            });
+        }
+    }
+    public static class ItemTagGenerator extends RPGSeriesDataGen.ItemTagGenerator {
+        public ItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+            var armorTagOptions = new RPGSeriesDataGen.ItemTagGenerator.ArmorOptions(false, false);
+            generateArmorTags(
+                    ArmorSets.entries.stream().filter(entry -> entry.name().contains("dragon")).toList(),
+                    RPGSeriesItemTags.ArmorMetaType.MELEE,
+                    armorTagOptions
+            );
         }
     }
     public static class SpellGen extends SpellGenerator {
@@ -98,13 +123,18 @@ public class AFTSDatagen implements DataGeneratorEntrypoint {
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
             Weapons.entries.forEach(entry -> {
                 itemModelGenerator.register(entry.item(), Models.HANDHELD);
-            });;
+            });
             MaterialItems.ENTRIES.forEach(entry -> {
                 itemModelGenerator.register(entry.item(), Models.GENERATED);
-            });;
+            });
             SmithingTemplates.ENTRIES.forEach(entry -> {
                 itemModelGenerator.register(entry.item().get(), Models.GENERATED);
-            });;
+            });
+            ArmorSets.entries.forEach(entry -> {
+                for (var piece: entry.armorSet().pieces()) {
+                    itemModelGenerator.register((Item) piece, Models.GENERATED);
+                }
+            });
         }
     }
 

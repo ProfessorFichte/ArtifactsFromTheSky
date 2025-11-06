@@ -113,5 +113,10 @@
         "id": "spell_engine:generic_fire_impact_1"
       }
     }
-  ]
+  ],
+  "cost": {
+    "cooldown": {
+      "duration": 1.0
+    }
+  }
 }

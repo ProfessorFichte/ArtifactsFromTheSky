@@ -41,6 +41,12 @@ public class MaterialItems {
             Item::new,
             new Item.Settings().rarity(Rarity.EPIC).fireproof()
     ));
+    public static final Entry dragon_scales = add(new Entry(
+            Identifier.of(MOD_ID, "dragon_scales"),
+            "Ender Dragon Scales",
+            Item::new,
+            new Item.Settings().rarity(Rarity.RARE).fireproof()
+    ));
 
 
     public static void register() {
