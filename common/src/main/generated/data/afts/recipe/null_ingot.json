@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "B": {
+      "item": "minecraft:dragon_breath"
+    },
+    "C": {
+      "item": "afts:voids_eye"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "afts:null_ingot"
+  }
+}

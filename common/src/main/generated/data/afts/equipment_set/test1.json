@@ -1,0 +1,20 @@
+{
+  "bonuses": [
+    {
+      "attributes": {
+        "modifiers": [
+          {
+            "type": "minecraft:generic.attack_damage",
+            "amount": 0.10000000149011612,
+            "id": "afts:test1",
+            "operation": "add_multiplied_base",
+            "slot": "mainhand"
+          }
+        ]
+      },
+      "required_piece_count": 1
+    }
+  ],
+  "items": "afts:void_devourer",
+  "name": "test1"
+}

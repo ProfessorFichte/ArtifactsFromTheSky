@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "afts",
+  "version": "${version}",
+  "name": "Artifacts from the Sky",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/afts/icon.gif",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.afts.fabric.FabricMod"
+    ],
+    "client": [
+      "com.afts.fabric.client.FabricClient"
+    ],
+    "fabric-datagen": [
+      "com.afts.datagen.AFTSDatagen"
+    ]
+  },
+  "mixins": [
+    "afts.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

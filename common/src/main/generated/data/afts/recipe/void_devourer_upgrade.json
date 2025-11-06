@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "afts:null_ingot"
+  },
+  "base": {
+    "item": "afts:fotv"
+  },
+  "result": {
+    "count": 1,
+    "id": "afts:void_devourer"
+  },
+  "template": {
+    "item": "afts:null_ingot_upgrade"
+  }
+}
