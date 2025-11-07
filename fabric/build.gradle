@@ -90,6 +90,7 @@ dependencies {
     modImplementation("maven.modrinth:mana-attributes:${project.mana_attributes_version}")
     modImplementation"me.fzzyhmstrs:fzzy_config:${project.fzzy_config_version}"
     modImplementation "maven.modrinth:resource-bar-api:${project.resource_bar_api_version}"
+    modImplementation("mod.azure.azurelibarmor:azurelibarmor-${platform}-${project.azure_mc_version}:${project.azure_lib_version}")
 }
 
 processResources {
