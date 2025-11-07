@@ -1,11 +1,11 @@
-// 1.21.1	2025-11-07T00:19:42.0291582	Artifacts from the Sky/Model Definitions
+// 1.21.1	2025-11-07T00:55:32.6968357	Artifacts from the Sky/Model Definitions
 1b656c0cd713248e8bac65a90cd6b7675a11e75e assets\afts\models\item\dragon_feet.json
 8adde70c728b001f122e68362e9c6c2bfb32e3cb assets\afts\models\item\null_ingot_upgrade.json
 f4ce186f4d8e7c78f38e450152d991f0528166a0 assets\afts\models\item\void_devourer.json
 36a550a0b960e99beb2675847ee0248b32d40714 assets\afts\models\item\dragon_chest.json
-a0e09ef44be2978e1acc48491f4f9ed67f352336 assets\afts\models\item\dragon_legs.json
 db696653cdb2b779a5415c1618340ccb522c1bfa assets\afts\models\item\voids_eye.json
-57e8e389496b49936ec5b61c967d599872363d7d assets\afts\models\item\dragon_scales.json
+a0e09ef44be2978e1acc48491f4f9ed67f352336 assets\afts\models\item\dragon_legs.json
 fb30ac780aef7b66c6ea00b6610548f2a1078179 assets\afts\models\item\null_ingot.json
-c24aa1ea978806e84d41fab77e5e24669e457431 assets\afts\models\item\dragon_head.json
+57e8e389496b49936ec5b61c967d599872363d7d assets\afts\models\item\dragon_scales.json
 e7ae27d1286457be1322ad0e3bc705927e717411 assets\afts\models\item\fotv.json
+c24aa1ea978806e84d41fab77e5e24669e457431 assets\afts\models\item\dragon_head.json

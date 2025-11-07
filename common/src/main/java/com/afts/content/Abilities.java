@@ -11,6 +11,7 @@ import net.spell_engine.api.spell.fx.Sound;
 import net.spell_engine.client.gui.SpellTooltip;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.SpellEngineParticles;
+import net.spell_engine.fx.SpellEngineSounds;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -47,12 +48,6 @@ public class Abilities {
         spell.school = SpellSchools.ARCANE;
         spell.range = 0;
         spell.tier = 1;
-
-        spell.tooltip = new Spell.Tooltip();
-        spell.tooltip.show_header = false;
-        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
-        spell.tooltip.description.color = Formatting.DARK_PURPLE.asString();
-        spell.tooltip.description.show_in_compact = true;
 
         SpellBuilder.Casting.instant(spell);
 
@@ -158,17 +153,33 @@ public class Abilities {
     private static Entry space_rupture() {
         var id = Identifier.of(MOD_ID, "space_rupture");
         var title = "Space Rupture";
-        var description = "";
+        var description = "Dealing {damage} damage to targets around you after Vorpal Leaping.";
 
         var spell = createModifierAlikePassiveSpell();
         spell.school = SpellSchools.ARCANE;
-        spell.range = 2.0F;
+        spell.range = 2.5F;
+
+
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_header = false;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
+        spell.tooltip.description.color = Formatting.DARK_PURPLE.asString();
+        spell.tooltip.description.show_in_compact = true;
 
         var trigger = SpellBuilder.Triggers.specificSpellCast("afts:vorpal_leap");
         spell.passive.triggers = List.of(trigger);
 
         spell.target.type = Spell.Target.Type.FROM_TRIGGER;
-
+        spell.release.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.SPELL,
+                                SpellEngineParticles.MagicParticles.Motion.BURST
+                        ).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        30, 0.2F, 0.7F)
+                        .color(Color.ARCANE.toRGBA()),
+        };
         spell.release.particles_scaled_with_ranged = new ParticleBatch[] {
                 new ParticleBatch(
                         SpellEngineParticles.area_effect_293.id().toString(),
@@ -184,6 +195,16 @@ public class Abilities {
         spell.deliver.stash_effect.consume = 0;
 
         var impact = SpellBuilder.Impacts.damage(0.5F, 0F);
+        impact.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.SPARK,
+                                SpellEngineParticles.MagicParticles.Motion.BURST
+                        ).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        10, 0.2F, 0.5F)
+                        .color(Color.ARCANE.toRGBA()),
+        };
         spell.impacts = List.of(impact);
         var areaImpact = new Spell.AreaImpact();
         areaImpact.radius = 2F;
@@ -197,20 +218,63 @@ public class Abilities {
     private static Entry improved_dragons_wrath() {
         var id = Identifier.of(MOD_ID, "improved_dragons_wrath");
         var title = "Improved Dragon's Wrath";
-        var description = "Dragons Wrath leaves fire puddles behind, for {cloud_duration} sec.";
+        var description = "Dragons Wrath leaves fire puddles behind for {cloud_duration} sec.";
 
         var spell = createModifierAlikePassiveSpell();
         spell.school = SpellSchools.ARCANE;
         spell.range = 0;
+
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_header = false;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
+        spell.tooltip.description.color = Formatting.DARK_PURPLE.asString();
+        spell.tooltip.description.show_in_compact = true;
 
         spell.target.type = Spell.Target.Type.FROM_TRIGGER;
 
         var trigger = SpellBuilder.Triggers.specificSpellHit("afts:dragons_wrath");
         spell.passive.triggers = List.of(trigger);
 
-        SpellBuilder.Complex.flameCloud(spell, 2.0F, 0.3F, 6, null);
-        SpellBuilder.Cost.cooldown(spell, 1);
+        spell.deliver.type = net.spell_engine.api.spell.Spell.Delivery.Type.CLOUD;
+        spell.deliver.delay = 5;
+        Spell.Delivery.Cloud cloud = new Spell.Delivery.Cloud();
+        cloud.volume.radius = 2.0F;
+        cloud.volume.area.vertical_range_multiplier = 0.3F;
+        cloud.volume.sound = new Sound(SpellEngineSounds.GENERIC_FIRE_IMPACT_2.id().toString());
+        cloud.impact_tick_interval = 8;
+        cloud.time_to_live_seconds = 4;
+        cloud.spawn.sound = new Sound(SpellEngineSounds.GENERIC_FIRE_IGNITE.id().toString());
+        cloud.client_data = new Spell.Delivery.Cloud.ClientData();
+        cloud.client_data.light_level = 15;
+        cloud.client_data.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.flame_ground.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        3.0F, 0.0F, 0.0F),
+                new ParticleBatch(SpellEngineParticles.flame_medium_a.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        2.0F, 0.02F, 0.1F),
+                new ParticleBatch(SpellEngineParticles.flame_medium_b.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        1.0F, 0.02F, 0.1F),
+                new ParticleBatch(SpellEngineParticles.flame_spark.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        3.0F, 0.03F, 0.2F)
+        };
+        spell.deliver.clouds = List.of(cloud);
 
+        var damage = SpellBuilder.Impacts.damage(0.5F, 0F);
+        damage.sound = new Sound(SpellEngineSounds.GENERIC_FIRE_IMPACT_1.id().toString());
+        damage.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.flame.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        20.0F, 0.05F, 0.15F),
+                new ParticleBatch(SpellEngineParticles.flame_medium_a.id().toString(),
+                        ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
+                        20.0F, 0.05F, 0.15F)
+        };
+        spell.impacts = List.of(damage);
+
+        SpellBuilder.Cost.cooldown(spell, 1);
         return new Entry(id, spell, title, description, null);
     }
 

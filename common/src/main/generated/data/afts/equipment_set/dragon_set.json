@@ -24,7 +24,7 @@
       }
     },
     {
-      "required_piece_count": 2,
+      "required_piece_count": 5,
       "spells": {
         "content": "ANY",
         "spell_ids": [

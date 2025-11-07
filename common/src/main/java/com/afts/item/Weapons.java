@@ -1,5 +1,6 @@
 package com.afts.item;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
@@ -10,8 +11,10 @@ import net.minecraft.util.Rarity;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
 import net.spell_engine.api.item.Equipment;
+import net.spell_engine.api.item.armor.Armor;
 import net.spell_engine.api.item.weapon.SpellSwordItem;
 import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.api.spell.SpellDataComponents;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -46,16 +49,27 @@ public class Weapons {
         }
     }
 
+    private static Armor.ItemSettingsTweaker commonSettings(Identifier equipmentSetId) {
+        return Armor.ItemSettingsTweaker.standard(itemSettings -> {
+            itemSettings
+                    .component(SpellDataComponents.EQUIPMENT_SET, equipmentSetId)
+                    .component(DataComponentTypes.RARITY, Rarity.RARE);
+        });
+    }
+
     private static final float sword_attack_speed = -2.4F;
     private static Weapon.Entry sword(String name, Weapon.CustomMaterial material, float damage) {
         return entry(name, material, SpellSwordItem::new, new WeaponConfig(damage, sword_attack_speed), Equipment.WeaponType.SWORD);
+    }
+    private static Weapon.Entry void_devourer(String name, Weapon.CustomMaterial material, float damage) {
+        return entry(name, material, VoidDevourerItem::new, new WeaponConfig(damage, sword_attack_speed), Equipment.WeaponType.SWORD);
     }
 
     public static final Weapon.Entry fotv = sword("fotv",
             Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.ENDER_PEARL)), 7.0F)
             .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 2.0F))
             .translatedName("Fragment of the Void");
-    public static final Weapon.Entry void_devourer = sword("void_devourer",
+    public static final Weapon.Entry void_devourer = void_devourer("void_devourer",
             Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.DRAGON_BREATH)), 7.5F)
             .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 3.5F))
             .translatedName("Void Devourer");

@@ -1,7 +1,6 @@
 package com.afts.item;
 
 import com.afts.content.SetBonuses;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ArmorItem;
@@ -25,7 +24,6 @@ import net.spell_power.api.SpellSchools;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 import static com.afts.AFTSMod.MOD_ID;
@@ -74,9 +72,6 @@ public class ArmorSets {
                     .component(DataComponentTypes.RARITY, Rarity.RARE);
         });
     }
-
-    public static Identifier dragon_set_passive = Identifier.of(MOD_ID, "dragon_set");
-
 
     private static final float dragonKnockbackRes = 0.5F;
     private static final float dragonAttackDmg = 0.05F;
@@ -143,7 +138,7 @@ public class ArmorSets {
                             .add(manaRegMultiplier(dragonManaRegen))
             ),
             commonSettings(SetBonuses.dragonSet.id()) )
-            .translatedName("", "", "", "");
+            .translatedName("Voidscale Helmet", "Voi", "", "");
 
     public static void register(Map<String, ArmorSetConfig> configs) {
         Armor.register(configs, entries, Group.KEY);
