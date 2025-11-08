@@ -89,6 +89,7 @@ public class AFTSDatagen implements DataGeneratorEntrypoint {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+            generateWeaponTags(Weapons.entries);
             var armorTagOptions = new RPGSeriesDataGen.ItemTagGenerator.ArmorOptions(false, false);
             generateArmorTags(
                     ArmorSets.entries.stream().filter(entry -> entry.name().contains("dragon")).toList(),

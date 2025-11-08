@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "afts:fotv",
+      "required": false
+    },
+    {
+      "id": "afts:void_devourer",
+      "required": false
+    }
+  ]
+}

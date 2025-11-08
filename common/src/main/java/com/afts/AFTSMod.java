@@ -1,6 +1,7 @@
 package com.afts;
 
 import com.afts.config.Default;
+import com.afts.content.CustomSpellImpacts;
 import com.afts.effect.AFTSEffects;
 import com.afts.item.*;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -30,6 +31,7 @@ public final class AFTSMod {
     public static void init() {
         itemConfig.refresh();
         effectConfig.refresh();
+        CustomSpellImpacts.registerCustomImpacts();
     }
     public static void registerItems() {
         Group.AFTS = FabricItemGroup.builder()

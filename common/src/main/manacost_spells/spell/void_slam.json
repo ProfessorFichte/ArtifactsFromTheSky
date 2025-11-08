@@ -20,6 +20,6 @@
     "cooldown": {
       "duration": 20.0
     },
-    "mana_cost": 6.0
+    "mana_cost": 3.0
   }
 }

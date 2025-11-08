@@ -76,7 +76,7 @@ public class ArmorSets {
     private static final float dragonKnockbackRes = 0.5F;
     private static final float dragonAttackDmg = 0.05F;
     private static final float dragonSpellPower = 0.025F;
-    private static final float dragonManaRegen = 1.0F;
+    private static final float dragonManaRegen = 0.25F;
 
 
     public static RegistryEntry<ArmorMaterial> material_dragon = material(
@@ -138,7 +138,7 @@ public class ArmorSets {
                             .add(manaRegMultiplier(dragonManaRegen))
             ),
             commonSettings(SetBonuses.dragonSet.id()) )
-            .translatedName("Voidscale Helmet", "Voi", "", "");
+            .translatedName("Voidscale Helmet", "Voidscale Chestplate", "Voidscale Trousers", "Voidscale Boots");
 
     public static void register(Map<String, ArmorSetConfig> configs) {
         Armor.register(configs, entries, Group.KEY);

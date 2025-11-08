@@ -1,6 +1,6 @@
 {
   "school": "spell_power:arcane",
-  "range": 2.0,
+  "range": 2.5,
   "tier": 1,
   "tooltip": {
     "show_header": false,
@@ -24,6 +24,17 @@
     ]
   },
   "release": {
+    "particles": [
+      {
+        "particle_id": "spell_engine:magic_spell_burst",
+        "origin": "CENTER",
+        "shape": "SPHERE",
+        "count": 30.0,
+        "min_speed": 0.2,
+        "max_speed": 0.7,
+        "color_rgba": 4284940287
+      }
+    ],
     "particles_scaled_with_ranged": [
       {
         "particle_id": "spell_engine:area_effect_293",
@@ -63,7 +74,18 @@
           "spell_power_coefficient": 0.5,
           "knockback": 0.0
         }
-      }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_spark_burst",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 10.0,
+          "min_speed": 0.2,
+          "max_speed": 0.5,
+          "color_rgba": 4284940287
+        }
+      ]
     }
   ],
   "area_impact": {

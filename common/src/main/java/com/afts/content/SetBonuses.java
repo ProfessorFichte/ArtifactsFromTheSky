@@ -54,14 +54,16 @@ public class SetBonuses {
                 "DRAGON SET BONUS",
                 dragon,
                 List.of(
-                        EquipmentSet.Bonus.withAttributes(1, attribute(
+                        /*EquipmentSet.Bonus.withAttributes(1, attribute(
                                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
                                 0.1F,
                                 EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE,
                                 id)
                         ),
-                        EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.improved_dragons_wrath.id())),
-                        EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.space_rupture.id()))
+                         */
+                        EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.space_rupture.id())),
+                        EquipmentSet.Bonus.withSpells(4, SpellContainerHelper.createForModifier(Abilities.void_slam.id())),
+                        EquipmentSet.Bonus.withSpells(5, SpellContainerHelper.createForModifier(Abilities.improved_dragons_wrath.id()))
                 )
         );
     }

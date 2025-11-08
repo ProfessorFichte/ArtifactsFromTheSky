@@ -3,16 +3,6 @@
   "range": 0.0,
   "tier": 1,
   "learn": {},
-  "tooltip": {
-    "show_header": false,
-    "name": {
-      "show_in_compact": false,
-      "show_in_details": false
-    },
-    "description": {
-      "color": "dark_purple"
-    }
-  },
   "active": {},
   "release": {
     "animation": "spell_engine:one_handed_area_release",
@@ -58,7 +48,7 @@
     "exhaust": 0.4,
     "cooldown": {
       "duration": 10.0
-    }
-  },
-  "mana_cost": 2.0
+    },
+    "mana_cost": 2.0
+  }
 }

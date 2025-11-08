@@ -1,3 +1,4 @@
 {
-  "spell_ids": ["afts:vorpal_leap"]
+  "spell_ids": ["afts:vorpal_leap"],
+  "is_proxy": true
 }

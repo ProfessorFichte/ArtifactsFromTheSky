@@ -12,6 +12,7 @@ import net.spell_engine.client.gui.SpellTooltip;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.SpellEngineParticles;
 import net.spell_engine.fx.SpellEngineSounds;
+import net.spell_engine.internals.target.SpellTarget;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -136,12 +137,88 @@ public class Abilities {
     private static Entry void_slam() {
         var id = Identifier.of(MOD_ID, "void_slam");
         var title = "Void Slam";
-        var description = "";
+        var effect = AFTSEffects.VOID_SLAM_JUMP;
+        var description = "Flying high and when landing dealing damage and inflicting weakness to targets.";
 
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.ARCANE;
         spell.range = 0;
         spell.tier = 4;
+
+        spell.target.type = Spell.Target.Type.CASTER;
+
+        var custom = new Spell.Impact();
+        custom.action = new Spell.Impact.Action();
+        custom.action.custom = new Spell.Impact.Action.Custom();
+        custom.action.type = Spell.Impact.Action.Type.CUSTOM;
+        custom.action.custom.intent = SpellTarget.Intent.HELPFUL;
+        custom.action.custom.handler = "afts:void_slam";
+
+        var buff = SpellBuilder.Impacts.effectSet(effect.id.toString(),10,0);
+        buff.action.status_effect.refresh_duration = false;
+
+        spell.impacts = List.of(buff);
+
+        SpellBuilder.Cost.exhaust(spell, 0.4F);
+        SpellBuilder.Cost.cooldown(spell, 20);
+        return new Entry(id, spell, title, description, null);
+    }
+    public static final Entry void_slam_landing_impact = add(void_slam_landing_impact());
+    private static Entry void_slam_landing_impact() {
+        var id = Identifier.of(MOD_ID, "void_slam_landing_impact");
+        var title = "Void Slam Landing";
+        var description = "Dealing {damage} damage";
+
+        var spell = SpellBuilder.createSpellActive();
+        spell.school = SpellSchools.ARCANE;
+        spell.range = 5;
+        spell.tier = 4;
+
+        spell.target.type = Spell.Target.Type.AREA;
+        spell.target.area = new Spell.Target.Area();
+        spell.target.area.vertical_range_multiplier = 0.5F;
+
+        spell.release.particles = new ParticleBatch[] {
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.SPARK,
+                                SpellEngineParticles.MagicParticles.Motion.BURST
+                        ).id().toString(),
+                        ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.GROUND,
+                        50, 0.8F, 1.5F)
+                        .color(Color.ARCANE.toRGBA()),
+                new ParticleBatch(
+                        SpellEngineParticles.smoke_medium.id().toString(),
+                        ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.GROUND,
+                        50,  0.8F, 1.5F)
+        };
+        spell.release.particles_scaled_with_ranged = new ParticleBatch[] {
+                new ParticleBatch(
+                        SpellEngineParticles.area_effect_293.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.GROUND,
+                        1, 0, 0)
+                        .scale(4.05F)
+                        .color(Color.ARCANE.alpha(0.6F).toRGBA())
+        };
+
+        var damage = SpellBuilder.Impacts.damage(0.5F, 0.8F);
+        damage.particles = new ParticleBatch[] {
+                new ParticleBatch(
+                        SpellEngineParticles.smoke_medium.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        10, 0.2F, 0.4F),
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.SPARK,
+                                SpellEngineParticles.MagicParticles.Motion.BURST
+                        ).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        30, 0.2F, 0.5F)
+                        .color(Color.ARCANE.toRGBA()),
+        };
+        var debuff = SpellBuilder.Impacts.effectSet("weakness",5,0);
+        debuff.action.status_effect.refresh_duration = false;
+        spell.impacts = List.of(damage);
 
         SpellBuilder.Cost.exhaust(spell, 0.4F);
         SpellBuilder.Cost.cooldown(spell, 20);
