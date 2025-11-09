@@ -1,7 +1,2 @@
-// 1.21.1	2025-11-08T12:03:58.4073835	Artifacts from the Sky/Tags for minecraft:item
-db199810a8b1cb048499cc7ab9b3e18492e681f4 data\minecraft\tags\item\foot_armor.json
-a122a09c005e63fd3f58533d8146bd56b04215aa data\minecraft\tags\item\chest_armor.json
+// 1.21.1	2025-11-09T12:25:43.3559222	Artifacts from the Sky/Tags for minecraft:item
 40f5020161deaf0c4865291146c03b35e65df142 data\rpg_series\tags\item\weapon_type\sword.json
-32628fbe5ed129507af33cdf558c8b9da7b553fc data\minecraft\tags\item\head_armor.json
-90397f923b2030b4f17359a8334f5df36b614d12 data\rpg_series\tags\item\armor_type\melee.json
-c8e7d2808a60e199dc685a11a7e9635a829d4f93 data\minecraft\tags\item\leg_armor.json

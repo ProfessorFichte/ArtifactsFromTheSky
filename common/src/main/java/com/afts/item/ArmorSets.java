@@ -111,7 +111,7 @@ public class ArmorSets {
 
     public static final Armor.Entry dragonArmorSet = create(
             material_dragon,
-            Identifier.of(MOD_ID, "dragon"),
+            Identifier.of(MOD_ID, "voidscale"),
             40,
             10,
             Armor.CustomItem::new,

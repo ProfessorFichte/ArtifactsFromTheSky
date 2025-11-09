@@ -1,17 +1,17 @@
-// 1.21.1	2025-11-08T12:03:58.4083843	Artifacts from the Sky/Recipes
+// 1.21.1	2025-11-09T12:25:43.3559222	Artifacts from the Sky/Recipes
+98ab22302c6666b9aa9dad9ed3de5ac2f5a563e6 data\afts\advancement\recipes\combat\voidscale_head.json
+7a1d1367fbd6ec87b96d80f02d6fad19bce5bbcc data\afts\recipe\voidscale_legs.json
 c0aa22457377d9e0decd8df6d2019417c1c7dc3d data\afts\recipe\voids_eye.json
 c429538ca41cd85432ff8cc55805500dd249249f data\afts\advancement\recipes\combat\void_devourer_upgrade.json
-10aa10ac79e54d66a003f7e11d7bd5ebaff86242 data\afts\advancement\recipes\combat\dragon_chest.json
-630dc2f55284e9a1ba90c114d96e85c93efc9247 data\afts\recipe\dragon_feet.json
-7516802c27d0a3e085cf39a5a280e9e2adc362fe data\afts\advancement\recipes\combat\dragon_head.json
+0250191119329db5ee1e2717630e564358169403 data\afts\recipe\voidscale_feet.json
+55ef201b329156278aaaff521a94d7aacf6b40f8 data\afts\recipe\voidscale_chest.json
+81cf734a71aa8cd112dc12032c508e2bba5c8706 data\afts\advancement\recipes\combat\voidscale_legs.json
+795ac187926dec019032888b3a9d224fd75dbe84 data\afts\advancement\recipes\combat\voidscale_feet.json
 36f38bcffcb12ac37eb9e1d6f5ece2bd4660453c data\afts\advancement\recipes\combat\voids_eye.json
 943522de6296797d7e970b26098cdc54d4360982 data\afts\recipe\void_devourer_upgrade.json
 ed787d275515ed5654d80102951cc0f3903949b1 data\afts\advancement\recipes\combat\fotv.json
 2fa01c41ee092e99ac15c275ca0062840e5cc3b3 data\afts\advancement\recipes\combat\null_ingot.json
-f4e2ba3ddb3757160ebf3864cc08c071952c4fee data\afts\recipe\dragon_legs.json
+54334885317f2606fe9f103e56703589d9664ee4 data\afts\advancement\recipes\combat\voidscale_chest.json
 a0b02ae104a507e8d99146892eefee11116a8711 data\afts\recipe\null_ingot.json
-3e9ddcb82c00b17b9e67181d777b55e2ed9b9b62 data\afts\advancement\recipes\combat\dragon_feet.json
-08703e3e86134fcf96c2dc1da4aea117576be4c2 data\afts\recipe\dragon_head.json
-8d066e2eab9653062b8d627e855299b756dd965c data\afts\advancement\recipes\combat\dragon_legs.json
-2ad39d3088974412e1d9ed42ff39171a4855309b data\afts\recipe\dragon_chest.json
+b3d04c5acece05c667eb02ac8a86045d0629abc9 data\afts\recipe\voidscale_head.json
 99cd22d2172134e1b2a4d1b46c88b8fe0504f61f data\afts\recipe\fotv.json

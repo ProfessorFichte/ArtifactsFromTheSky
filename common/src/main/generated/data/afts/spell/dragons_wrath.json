@@ -60,9 +60,6 @@
     "cooldown": {
       "duration": 10.0,
       "proportional": true
-    },
-    "mana_cost": 4.0,
-    "check_mana_cost": true,
-    "check_mana": true
+    }
   }
 }
