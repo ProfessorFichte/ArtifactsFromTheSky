@@ -62,7 +62,6 @@ public class SetBonuses {
                         ),
                          */
                         EquipmentSet.Bonus.withSpells(2, SpellContainerHelper.createForModifier(Abilities.space_rupture.id())),
-                        EquipmentSet.Bonus.withSpells(4, SpellContainerHelper.createForModifier(Abilities.void_slam.id())),
                         EquipmentSet.Bonus.withSpells(5, SpellContainerHelper.createForModifier(Abilities.improved_dragons_wrath.id()))
                 )
         );

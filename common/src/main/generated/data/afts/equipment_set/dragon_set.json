@@ -10,15 +10,6 @@
       }
     },
     {
-      "required_piece_count": 4,
-      "spells": {
-        "content": "ANY",
-        "spell_ids": [
-          "afts:void_slam"
-        ]
-      }
-    },
-    {
       "required_piece_count": 5,
       "spells": {
         "content": "ANY",
@@ -29,10 +20,10 @@
     }
   ],
   "items": [
-    "afts:dragon_head",
-    "afts:dragon_chest",
-    "afts:dragon_legs",
-    "afts:dragon_feet",
+    "afts:voidscale_head",
+    "afts:voidscale_chest",
+    "afts:voidscale_legs",
+    "afts:voidscale_feet",
     "afts:void_devourer"
   ],
   "name": "dragon_set"
