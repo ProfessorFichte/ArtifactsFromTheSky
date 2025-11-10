@@ -1,7 +1,8 @@
-// 1.21.1	2025-11-09T12:25:43.3569234	Artifacts from the Sky/Spell Generator
+// 1.21.1	2025-11-10T22:39:16.9406794	Artifacts from the Sky/Spell Generator
 3eda8ea92e3a8bfb4b62a32da356bd0376d6654a data\afts\spell\space_rupture.json
 7b70e66c8be1d3b061864349dd0b86d7c583de12 data\afts\spell\vorpal_leap.json
 693f952ed3b49a366a4128e8cabefc5270dff3dc data\afts\spell\dragons_wrath.json
 678ff1bb4b47fee4b7c28fb85de7f9e48bbd5f21 data\afts\spell\improved_dragons_wrath.json
-499bef1ed36c6a60a88f4983e62c9c4be2da6073 data\afts\spell\void_slam_landing_impact.json
-8f3eaf30a1e93c49dd97f03d2f021c53ce71c167 data\afts\spell\void_slam.json
+42a375281252e51d9a47a2ed6fba6f4357afdf03 data\afts\spell\void_slam_landing_impact.json
+467aa2446fbc2310a50064f6c42173cf45dc65f8 data\afts\spell\void_slam.json
+c4f241c7e1ddf1db4e2994c8be90dcef0f789a3d data\afts\spell\improved_void_slam.json

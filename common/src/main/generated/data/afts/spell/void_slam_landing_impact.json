@@ -1,6 +1,6 @@
 {
   "school": "spell_power:arcane",
-  "range": 5.0,
+  "range": 6.0,
   "tier": 4,
   "learn": {},
   "active": {},
@@ -70,6 +70,25 @@
           "color_rgba": 4284940287
         }
       ]
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "slowness",
+          "duration": 5.0,
+          "refresh_duration": false
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "CUSTOM",
+        "custom": {
+          "intent": "HARMFUL",
+          "handler": "afts:void_slam"
+        }
+      }
     }
   ],
   "cost": {

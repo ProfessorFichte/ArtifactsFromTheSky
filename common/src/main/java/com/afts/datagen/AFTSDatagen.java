@@ -2,6 +2,7 @@ package com.afts.datagen;
 
 import com.afts.content.Abilities;
 import com.afts.content.SetBonuses;
+import com.afts.effect.AFTSEffects;
 import com.afts.item.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -79,6 +80,10 @@ public class AFTSDatagen implements DataGeneratorEntrypoint {
                 for (var armorEntry: translations.entrySet()) {
                     translationBuilder.add(armorEntry.getKey(), armorEntry.getValue());
                 }
+            });
+            AFTSEffects.entries.forEach(entry -> {
+                translationBuilder.add(entry.effect.getTranslationKey(), entry.title);
+                translationBuilder.add(entry.effect.getTranslationKey() + ".description", entry.description);
             });
         }
     }

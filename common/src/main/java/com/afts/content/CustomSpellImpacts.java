@@ -10,7 +10,11 @@ public class CustomSpellImpacts {
     public static void registerCustomImpacts(){
         SpellHandlers.registerCustomImpact(
                 Identifier.of(MOD_ID, "void_slam"),
-                new VoidSlamImpact()
+                new VoidSlamKnockUpImpact()
+        );
+        SpellHandlers.registerCustomImpact(
+                Identifier.of(MOD_ID, "caster_jump"),
+                new CasterJumpImpact()
         );
     }
 }

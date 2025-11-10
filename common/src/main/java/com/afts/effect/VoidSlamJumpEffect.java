@@ -26,9 +26,11 @@ public class VoidSlamJumpEffect extends StatusEffect {
 
     public void onApplied(LivingEntity entity, int amplifier) {
         super.onApplied(entity, amplifier);
+        /*
         Vec3d velocity = entity.getVelocity();
         entity.setVelocity(velocity.x, 0.0, velocity.z);
         entity.addVelocity(0.0, 1.5F, 0.0);
         entity.velocityModified = true;
+         */
     }
 }

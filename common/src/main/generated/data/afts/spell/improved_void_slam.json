@@ -1,0 +1,30 @@
+{
+  "school": "spell_power:arcane",
+  "range": 0.0,
+  "tier": 1,
+  "tooltip": {
+    "show_header": false,
+    "name": {
+      "show_in_compact": false,
+      "show_in_details": false
+    },
+    "description": {
+      "color": "dark_purple"
+    }
+  },
+  "type": "MODIFIER",
+  "modifiers": [
+    {
+      "spell_pattern": "afts:void_slam_landing_impact",
+      "effect_amplifier_add": 1
+    },
+    {
+      "spell_pattern": "afts:void_slam_landing_impact",
+      "range_add": 1.0
+    },
+    {
+      "spell_pattern": "afts:void_slam",
+      "range_add": 1.0
+    }
+  ]
+}

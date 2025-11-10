@@ -1,4 +1,4 @@
 {
-  "spell_ids": ["afts:vorpal_leap","afts:dragons_wrath"],
+  "spell_ids": ["afts:vorpal_leap","afts:dragons_wrath","afts:improved_void_slam"],
   "is_proxy": true
 }

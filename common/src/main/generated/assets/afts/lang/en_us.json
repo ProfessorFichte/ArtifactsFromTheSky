@@ -19,6 +19,8 @@
   "spell.afts.dragons_wrath.name": "Dragon's Wrath",
   "spell.afts.improved_dragons_wrath.description": "Dragons Wrath leaves fire puddles behind for {cloud_duration} sec.",
   "spell.afts.improved_dragons_wrath.name": "Improved Dragon's Wrath",
+  "spell.afts.improved_void_slam.description": "With Void Slam jump {range_add_1} block higher and knock up targets {range_add_1} block higher. The ground landing impact deals {power_multiplier} more damage and inflicts {effect_amplifier_add} higher amplifier of slowness.",
+  "spell.afts.improved_void_slam.name": "Improved Void Slam",
   "spell.afts.space_rupture.description": "Dealing {damage} damage to targets around you after Vorpal Leaping.",
   "spell.afts.space_rupture.name": "Space Rupture",
   "spell.afts.void_slam.description": "Flying high and when landing dealing damage and inflicting weakness to targets.",

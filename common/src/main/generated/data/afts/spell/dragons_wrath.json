@@ -60,6 +60,10 @@
     "cooldown": {
       "duration": 10.0,
       "proportional": true
-    }
+    },
+    "mana_cost": 0.5,
+    "apply_channeling_mana_cost": true,
+    "check_mana_cost": true,
+    "check_mana": true
   }
 }

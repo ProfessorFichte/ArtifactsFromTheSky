@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-09T12:25:43.3559222	Artifacts from the Sky/Model Definitions
+// 1.21.1	2025-11-10T22:39:16.9396804	Artifacts from the Sky/Model Definitions
 b488fbfef3af9d224e3244d6446a2be1e39ea150 assets\afts\models\item\voidscale_chest.json
 03be240cc608fc7db73d2671829b4e81acdc0ad9 assets\afts\models\item\voidscale_legs.json
 8adde70c728b001f122e68362e9c6c2bfb32e3cb assets\afts\models\item\null_ingot_upgrade.json
@@ -7,5 +7,5 @@ db696653cdb2b779a5415c1618340ccb522c1bfa assets\afts\models\item\voids_eye.json
 fb30ac780aef7b66c6ea00b6610548f2a1078179 assets\afts\models\item\null_ingot.json
 57e8e389496b49936ec5b61c967d599872363d7d assets\afts\models\item\dragon_scales.json
 e7ae27d1286457be1322ad0e3bc705927e717411 assets\afts\models\item\fotv.json
-3d56a3e344c0c9c84959e08c5fde881ba7d1ef55 assets\afts\models\item\voidscale_feet.json
 c5224fb3e4654c26c0caf915abb72e1ff83c1061 assets\afts\models\item\voidscale_head.json
+3d56a3e344c0c9c84959e08c5fde881ba7d1ef55 assets\afts\models\item\voidscale_feet.json

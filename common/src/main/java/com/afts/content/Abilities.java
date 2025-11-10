@@ -132,7 +132,9 @@ public class Abilities {
 
         return new Entry(id, spell, title, description, null);
     }
-
+    //TO DO
+    //with chestplate: leap 5~ blocks upwards, slam upwards to 6 blocks (depending on velocity), dealing 7 damage on impact and applying slowness
+    //with chestplate and sword (modifier on sword):  leap 6~ blocks upwards, slam upwards to 7 blocks (depending on velocity), dealing 11 damage on impact and applying slowness 2
     public static final Entry void_slam = add(void_slam());
     private static Entry void_slam() {
         var id = Identifier.of(MOD_ID, "void_slam");
@@ -142,7 +144,7 @@ public class Abilities {
 
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.ARCANE;
-        spell.range = 0;
+        spell.range = 5;
         spell.tier = 4;
 
         spell.target.type = Spell.Target.Type.CASTER;
@@ -152,12 +154,12 @@ public class Abilities {
         custom.action.custom = new Spell.Impact.Action.Custom();
         custom.action.type = Spell.Impact.Action.Type.CUSTOM;
         custom.action.custom.intent = SpellTarget.Intent.HELPFUL;
-        custom.action.custom.handler = "afts:void_slam";
+        custom.action.custom.handler = "afts:caster_jump";
 
         var buff = SpellBuilder.Impacts.effectSet(effect.id.toString(),10,0);
         buff.action.status_effect.refresh_duration = false;
 
-        spell.impacts = List.of(buff);
+        spell.impacts = List.of(buff, custom);
 
         SpellBuilder.Cost.exhaust(spell, 0.4F);
         SpellBuilder.Cost.cooldown(spell, 20);
@@ -171,7 +173,7 @@ public class Abilities {
 
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.ARCANE;
-        spell.range = 5;
+        spell.range = 6;
         spell.tier = 4;
 
         spell.target.type = Spell.Target.Type.AREA;
@@ -216,9 +218,16 @@ public class Abilities {
                         30, 0.2F, 0.5F)
                         .color(Color.ARCANE.toRGBA()),
         };
-        var debuff = SpellBuilder.Impacts.effectSet("weakness",5,0);
+        var debuff = SpellBuilder.Impacts.effectSet("slowness",5,0);
         debuff.action.status_effect.refresh_duration = false;
-        spell.impacts = List.of(damage);
+        var custom = new Spell.Impact();
+        custom.action = new Spell.Impact.Action();
+        custom.action.custom = new Spell.Impact.Action.Custom();
+        custom.action.type = Spell.Impact.Action.Type.CUSTOM;
+        custom.action.custom.intent = SpellTarget.Intent.HARMFUL;
+        custom.action.custom.handler = "afts:void_slam";
+
+        spell.impacts = List.of(damage,debuff,custom);
 
         SpellBuilder.Cost.exhaust(spell, 0.4F);
         SpellBuilder.Cost.cooldown(spell, 20);
@@ -235,7 +244,6 @@ public class Abilities {
         var spell = createModifierAlikePassiveSpell();
         spell.school = SpellSchools.ARCANE;
         spell.range = 2.5F;
-
 
         spell.tooltip = new Spell.Tooltip();
         spell.tooltip.show_header = false;
@@ -352,6 +360,39 @@ public class Abilities {
         spell.impacts = List.of(damage);
 
         SpellBuilder.Cost.cooldown(spell, 1);
+        return new Entry(id, spell, title, description, null);
+    }
+    public static final Entry improved_void_slam = add(improved_void_slam());
+    private static Entry improved_void_slam() {
+        var id = Identifier.of(MOD_ID, "improved_void_slam");
+        var title = "Improved Void Slam";
+        var description = "With Void Slam jump {range_add_1} block higher and knock up targets {range_add_1} block higher. " +
+                "The ground landing impact deals {power_multiplier} more damage and inflicts {effect_amplifier_add} higher amplifier of slowness.";
+        var spell = SpellBuilder.createSpellModifier();
+        spell.school = SpellSchools.ARCANE;
+
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_header = false;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
+        spell.tooltip.description.color = Formatting.DARK_PURPLE.asString();
+        spell.tooltip.description.show_in_compact = true;
+
+        var effectAmplifierAdd = new Spell.Modifier();
+        effectAmplifierAdd.spell_pattern = "afts:void_slam_landing_impact";
+        effectAmplifierAdd.effect_amplifier_add = 1;
+        var rangeAdd = new Spell.Modifier();
+        rangeAdd.spell_pattern = "afts:void_slam_landing_impact";
+        rangeAdd.range_add = 1;
+        var rangeAdd2 = new Spell.Modifier();
+        rangeAdd2.spell_pattern = "afts:void_slam";
+        rangeAdd2.range_add = 1;
+        var powerModifier = new Spell.Modifier();
+        powerModifier.spell_pattern =  "afts:void_slam_landing_impact";
+        powerModifier.power_modifier = new Spell.Impact.Modifier();
+        powerModifier.power_modifier.power_multiplier = 0.3F;
+
+        spell.modifiers = List.of(effectAmplifierAdd,rangeAdd, rangeAdd2);
+
         return new Entry(id, spell, title, description, null);
     }
 
